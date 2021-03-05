@@ -15,23 +15,56 @@
       <h1>Disney Vacation Planner</h1>
       <main>
         <section id='auth-section'>
-          <div id='auth-message'></div>
           <form id='sign-up'>
             <input name="credentials[email]" type="email" placeholder="Enter Email Here" required>
               <input name="credentials[password]" type="password" placeholder="Enter Password Here" required>
               <input name="credentials[password_confirmation]" type="password" placeholder="Enter Password Again" required>
               <button>Sign Up</button>
+              <div id='signup-message'></div>
           </form>
           <form id='sign-in'>
             <input name="credentials[email]" type="email" placeholder="Enter Email Here" required>
               <input name="credentials[password]" type="password" placeholder="Enter Password Here" required>
               <button>Sign In</button>
+              <div id='signin-message'></div>
           </form>
           <form id='change-password'>
             <input name="passwords[old]" type="password" placeholder="Enter Old Password" required>
             <input name="passwords[new]" type="password" placeholder="Enter New Password" required>
             <button>Change Password</button>
+            <div id='changepassword-message'></div>
           </form>
+          <form id='sign-out'>
+            <button class='sign-out-button'>Sign Out</button>
+          </form>
+          <div id='signout-message'></div>
+          <div id='error-message'></div>
+          <hr>
+        </section>
+        <section id='trip-section'>
+          <button id='indextrips'>View All Trips</button>
+          <button id='hidetripinfo'>Hide Trip Info</button>
+          <form id='create-trip'>
+            <input name="trip[name]" type="text" placeholder="Enter New Trip Name" required>
+            <input name="trip[dates]" type="text" placeholder="Enter Dates Visiting" required>
+            <input name="trip[description]" type="text" placeholder="Enter Trip Notes" required>
+            <button>Create New Trip</button>
+          </form>
+          <form id='show-trip'>
+            <input name="trip[id]" type="text" placeholder="Enter Trip Id">
+            <button>Show Trip</button>
+          </form>
+          <form id='update-trip'>
+            <input name="trip[id]" type="text" placeholder="Enter Trip Id">
+            <input name="trip[name]" type="text" placeholder="Update Trip Name" required>
+            <input name="trip[dates]" type="text" placeholder="Update Dates Visiting" required>
+            <input name="trip[description]" type="text" placeholder="Update Trip Notes" required>
+            <button>Update Existing Trip</button>
+          </form>
+          <div id='createtrip-message'></div>
+          <div id='showtrip-message'></div>
+          <div id='trip-message'></div>
+          <div id='triperror-message'></div>
         </section>
       </main>
     </body>

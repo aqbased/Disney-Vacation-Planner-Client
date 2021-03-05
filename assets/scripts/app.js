@@ -1,12 +1,18 @@
 'use strict'
 
 const authEvents = require('./auth/events')
+const tripEvents = require('./trips/events')
 
 $(() => {
-  // Sign Up
+  // AUTH SECTION //
   $('#sign-up').on('submit', authEvents.onSignUp)
-  // Sign In
   $('#sign-in').on('submit', authEvents.onSignIn)
-  // Change Password
   $('#change-password').on('submit', authEvents.onChangePassword)
+  $('#sign-out').on('submit', authEvents.onSignOut)
+  // TRIPS SECTION //
+  $('#create-trip').on('submit', tripEvents.onCreateTrip)
+  $('#show-trip').on('submit', tripEvents.onShowTrip)
+  $('#hidetripinfo').on('click', tripEvents.onHideTrip)
+  $('#indextrips').on('click', tripEvents.onIndexTrip)
+  $('#update-trip').on('submit', tripEvents.onUpdateTrip)
 })

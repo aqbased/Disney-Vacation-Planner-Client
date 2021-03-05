@@ -1,39 +1,51 @@
+'use strict'
+
 const store = require('./../store')
-const signUpSuccess = function (response) {
-  $('#sign-up').trigger('reset')
-  $('#auth-message').html('Welcome!')
+const onSignUpSuccess = function (response) {
+  $('form').trigger('reset')
+  $('#signup-message').html('Welcome!')
   setTimeout(() => {
-    $('#auth-message').html('')
+    $('#signup-message').html('')
   }, 5000)
 }
 
 const authFailure = function (response) {
-  $('#auth-message').html('Sorry, that did not work.  Please try again.')
+  $('#error-message').html('Sorry, that did not work.  Please try again.')
   setTimeout(() => {
-    $('#auth-message').html('')
+    $('#error-message').html('')
   }, 5000)
 }
 
 const onSignInSuccess = function (response) {
   store.user = response.user
-  $('#sign-in').trigger('reset')
-  $('#auth-message').html('Welcome home!')
+  console.log(store.user)
+  $('form').trigger('reset')
+  $('#signin-message').html('Welcome home!')
   setTimeout(() => {
-    $('#auth-message').html('')
+    $('#signin-message').html('')
   }, 5000)
 }
 
 const onChangePasswordSuccess = function (response) {
-  $('#change-password').trigger('reset')
-  $('#auth-message').html('You\'re password has been changed.')
+  $('form').trigger('reset')
+  $('#changepassword-message').html('You\'re password has been changed.')
   setTimeout(() => {
-    $('#auth-message').html('')
+    $('#changepassword-message').html('')
+  }, 5000)
+}
+
+const onSignOutSuccess = function (response) {
+  $('form').trigger('reset')
+  $('#signout-message').html('Thank you for visiting!')
+  setTimeout(() => {
+    $('#signout-message').html('')
   }, 5000)
 }
 
 module.exports = {
-  signUpSuccess,
+  onSignUpSuccess,
   authFailure,
   onSignInSuccess,
-  onChangePasswordSuccess
+  onChangePasswordSuccess,
+  onSignOutSuccess
 }
