@@ -61,10 +61,15 @@
             <input name="trip[description]" type="text" placeholder="Update Trip Notes" required>
             <button>Update Existing Trip</button>
           </form>
-          <div id='createtrip-message'></div>
-          <div id='showtrip-message'></div>
+          <form id='destroy-trip'>
+            <input name="trip[id]" type="text" placeholder="Enter Trip Id">
+            <button>Delete This Trip</button>
+          </form>
+          <!--<div id='createtrip-message'></div>
+          <div id='showtrip-message'></div> -->
           <div id='trip-message'></div>
           <div id='triperror-message'></div>
+          <!-- <div id='destroytrip-message'></div> -->
         </section>
       </main>
     </body>

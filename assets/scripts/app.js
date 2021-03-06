@@ -15,4 +15,9 @@ $(() => {
   $('#hidetripinfo').on('click', tripEvents.onHideTrip)
   $('#indextrips').on('click', tripEvents.onIndexTrip)
   $('#update-trip').on('submit', tripEvents.onUpdateTrip)
+  $('#destroy-trip').on('submit', tripEvents.onDestroyTrip)
+  // HIDE BEFORE SIGN IN //
+  $('#trip-section').hide()
+  $('#sign-out').hide()
+  $('#change-password').hide()
 })
