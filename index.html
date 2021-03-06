@@ -12,21 +12,45 @@
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
-      <h1>Disney Vacation Planner</h1>
+      <header>
+        <h1>Disney Vacation Planner</h1>
+      </header>
       <main>
         <section id='auth-section'>
-          <form id='sign-up'>
-            <input name="credentials[email]" type="email" placeholder="Enter Email Here" required>
-              <input name="credentials[password]" type="password" placeholder="Enter Password Here" required>
-              <input name="credentials[password_confirmation]" type="password" placeholder="Enter Password Again" required>
-              <button>Sign Up</button>
-              <div id='signup-message'></div>
-          </form>
+          <!-- SIGN UP MODAL -->
+          <button id="signUpButton" type="button" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">
+            Sign Up
+          </button>
+          <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+            <div class="modal-dialog" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title" id="signUpModalLabel">Sign up to get the adventure started!</h5>
+                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+                <div class="modal-body">
+                  <form id='sign-up'>
+                    <input name="credentials[email]" type="email" placeholder="Enter Email Here" required>
+                      <input name="credentials[password]" type="password" placeholder="Enter Password Here" required>
+                      <input name="credentials[password_confirmation]" type="password" placeholder="Enter Password Again" required>
+                      <button>Sign Up</button>
+                  </form>
+                </div>
+              </div>
+            </div>
+          </div>
           <form id='sign-in'>
-            <input name="credentials[email]" type="email" placeholder="Enter Email Here" required>
-              <input name="credentials[password]" type="password" placeholder="Enter Password Here" required>
-              <button>Sign In</button>
-              <div id='signin-message'></div>
+            <div class="form-group">
+              <label for="exampleInputEmail1">Email address</label>
+              <input name="credentials[email]" type="email" class="form-control" id="signInEmailInput" aria-describedby="emailHelp" placeholder="Enter email">
+            </div>
+            <div class="form-group">
+              <label for="exampleInputPassword1">Password</label>
+              <input name="credentials[password]" type="password" class="form-control" id="signInPasswordInput" placeholder="Password">
+            </div>
+            <button id="signinbtn" type="submit" class="btn btn-outline-primary">Sign In</button>
           </form>
           <form id='change-password'>
             <input name="passwords[old]" type="password" placeholder="Enter Old Password" required>
@@ -37,6 +61,7 @@
           <form id='sign-out'>
             <button class='sign-out-button'>Sign Out</button>
           </form>
+          <div id='signup-message'></div>
           <div id='signout-message'></div>
           <div id='error-message'></div>
           <hr>
