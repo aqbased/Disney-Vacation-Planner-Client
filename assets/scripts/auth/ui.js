@@ -3,10 +3,12 @@
 const store = require('./../store')
 const onSignUpSuccess = function (response) {
   $('form').trigger('reset')
+  $('#signup-message').addClass('success')
   $('#signup-message').html('Welcome!')
   setTimeout(() => {
     $('#signup-message').html('')
   }, 5000)
+  $('#signUpModal').modal('hide')
 }
 
 const authFailure = function (response) {
@@ -29,7 +31,7 @@ const onSignInSuccess = function (response) {
   $('#sign-out').show()
   $('#change-password').show()
   // HIDE AFTER SIGN IN //
-  $('#sign-up').hide()
+  $('#signUpButton').hide()
   $('#sign-in').hide()
 }
 
@@ -48,7 +50,7 @@ const onSignOutSuccess = function (response) {
     $('#signout-message').html('')
   }, 5000)
   // SHOW AFTER SIGN OUT //
-  $('#sign-up').show()
+  $('#signUpButton').show()
   $('#sign-in').show()
   // HIDE AFTER SIGN OUT //
   $('#trip-section').hide()
