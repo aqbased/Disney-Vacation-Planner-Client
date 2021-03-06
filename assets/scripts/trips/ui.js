@@ -1,22 +1,12 @@
 'use strict'
-const store = require('./../store')
+// const store = require('./../store')
 
 const onCreateTripSuccess = function (response) {
-  store.tripid = response._id
   $('form').trigger('reset')
-  $('#trip-message').html(`The last trip id created was ${store.tripid}`)
-  $('#createtrip-message').html('Woohoo!  You\'re trip has been created!')
+  $('#trip-message').html(`You're created trip's id is: ${response._id}`)
   setTimeout(() => {
-    $('#createtrip-message').html('')
+    $('#trip-message').html('')
   }, 5000)
-  console.log('you made it to create trip success')
-}
-const onCreateTripFailure = function (response) {
-  $('#triperror-message').html('Sorry!  You\'re trip was not created, try again.')
-  setTimeout(() => {
-    $('#triperror-message').html('')
-  }, 5000)
-  console.log('you made it to create trip failure')
 }
 
 const onShowTripSuccess = function (response) {
@@ -26,46 +16,56 @@ const onShowTripSuccess = function (response) {
     <h4>Name: ${tripInfo.name}</h4>
     <p>Dates: ${tripInfo.dates}</p>
     <p>Description: ${tripInfo.description}</p>
+    <p>Trip Id: ${tripInfo._id}
   `
-  $('#showtrip-message').html(tripInfoHtml)
-}
-
-const onShowTripFailure = function (response) {
-  console.log('show trip failure')
+  $('#trip-message').show()
+  $('#trip-message').html(tripInfoHtml)
 }
 
 const onIndexTripSuccess = function (response) {
-  console.log('this is response', response)
   let tripInfoHtml = ''
   response.forEach(response => {
     tripInfoHtml += `
       <p>Name: ${response.name}<p>
       <p>Dates: ${response.dates}<p>
       <p>Description: ${response.description}<p>
+      <p>Trip Id: ${response._id}
       <hr>
     `
   })
-  $('#showtrip-message').append(tripInfoHtml)
-}
-
-const onIndexTripFailure = function (response) {
-  console.log('u failed my dude')
+  $('#trip-message').show()
+  $('#trip-message').html(tripInfoHtml)
 }
 
 const onUpdateTripSuccess = function () {
   $('form').trigger('reset')
-  $('#showtrip-message').html('The update has gone through.  Search the trip by ID to check updates or view through your index.')
+  $('#trip-message').html('The update has gone through.  Search the trip by ID to check updates or view through your index.')
   setTimeout(() => {
-    $('#showtrip-message').html('')
+    $('#trip-message').html('')
+  }, 5000)
+}
+
+const onDestroyTripSuccess = function () {
+  $('form').trigger('reset')
+  $('#trip-message').html('Your trip has been deleted.')
+  setTimeout(() => {
+    $('#trip-message').html('')
+  }, 5000)
+}
+
+const onTripFailure = function () {
+  $('form').trigger('reset')
+  $('#triperror-message').html('Sorry!  Something wasn\'t right, please try again.')
+  setTimeout(() => {
+    $('#triperror-message').html('')
   }, 5000)
 }
 
 module.exports = {
   onCreateTripSuccess,
-  onCreateTripFailure,
-  onShowTripFailure,
   onShowTripSuccess,
   onIndexTripSuccess,
-  onIndexTripFailure,
-  onUpdateTripSuccess
+  onUpdateTripSuccess,
+  onDestroyTripSuccess,
+  onTripFailure
 }

@@ -44,9 +44,21 @@ const updateTrip = function (id, data) {
   })
 }
 
+const destroyTrip = function (id) {
+  console.log('this is destroyTrip Id', id)
+  return $.ajax({
+    url: config.apiUrl + '/trips/' + id,
+    method: 'DELETE',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    }
+  })
+}
+
 module.exports = {
   createTrip,
   showTrip,
   indexTrip,
-  updateTrip
+  updateTrip,
+  destroyTrip
 }

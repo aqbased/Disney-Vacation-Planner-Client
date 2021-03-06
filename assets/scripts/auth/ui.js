@@ -24,6 +24,13 @@ const onSignInSuccess = function (response) {
   setTimeout(() => {
     $('#signin-message').html('')
   }, 5000)
+  // SHOW AFTER SIGN IN //
+  $('#trip-section').show()
+  $('#sign-out').show()
+  $('#change-password').show()
+  // HIDE AFTER SIGN IN //
+  $('#sign-up').hide()
+  $('#sign-in').hide()
 }
 
 const onChangePasswordSuccess = function (response) {
@@ -40,6 +47,14 @@ const onSignOutSuccess = function (response) {
   setTimeout(() => {
     $('#signout-message').html('')
   }, 5000)
+  // SHOW AFTER SIGN OUT //
+  $('#sign-up').show()
+  $('#sign-in').show()
+  // HIDE AFTER SIGN OUT //
+  $('#trip-section').hide()
+  $('#sign-out').hide()
+  $('#change-password').hide()
+  $('#trip-message').hide()
 }
 
 module.exports = {
