@@ -29,7 +29,7 @@ const onSignInSuccess = function (response) {
   // SHOW AFTER SIGN IN //
   $('#trip-section').show()
   $('#sign-out').show()
-  $('#change-password').show()
+  $('#changepasswordbtn').show()
   // HIDE AFTER SIGN IN //
   $('#signUpButton').hide()
   $('#sign-in').hide()
@@ -55,7 +55,7 @@ const onSignOutSuccess = function (response) {
   // HIDE AFTER SIGN OUT //
   $('#trip-section').hide()
   $('#sign-out').hide()
-  $('#change-password').hide()
+  $('#changepasswordbtn').hide()
   $('#trip-message').hide()
 }
 

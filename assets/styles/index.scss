@@ -4,14 +4,22 @@ header {
   background-color: rgba(287,145,49,1);
   padding: 50px;
   text-align: center;
-}
-
-#sign-in {
-  margin: 50px;
-  padding: 50px;
+  border: 1px solid black;
 }
 
 .success {
   color: green;
   font-size: 50px;
+}
+
+#sign-in {
+  padding: 100px;
+}
+
+#changepasswordbtn {
+  float: left;
+}
+
+.soauth {
+  float: right;
 }
