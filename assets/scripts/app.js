@@ -19,5 +19,5 @@ $(() => {
   // HIDE BEFORE SIGN IN //
   $('#trip-section').hide()
   $('#sign-out').hide()
-  $('#change-password').hide()
+  $('#changepasswordbtn').hide()
 })

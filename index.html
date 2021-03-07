@@ -16,86 +16,116 @@
         <h1>Disney Vacation Planner</h1>
       </header>
       <main>
-        <section id='auth-section'>
-          <!-- SIGN UP MODAL -->
-          <button id="signUpButton" type="button" class="btn btn-primary" data-toggle="modal" data-target="#signUpModal">
-            Sign Up
-          </button>
-          <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
-            <div class="modal-dialog" role="document">
-              <div class="modal-content">
-                <div class="modal-header">
-                  <h5 class="modal-title" id="signUpModalLabel">Sign up to get the adventure started!</h5>
-                  <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                  </button>
+        <div class="container">
+          <div class="row">
+            <div class="col text-center">
+              <section id='auth-section'>
+                <form id='sign-in'>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">Email address</label>
+                    <input name="credentials[email]" type="email" class="form-control" id="signInEmailInput" aria-describedby="emailHelp" placeholder="Enter email here">
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputPassword1">Password</label>
+                    <input name="credentials[password]" type="password" class="form-control" id="signInPasswordInput" placeholder="Enter password here">
+                  </div>
+                  <button id="signinbtn" type="submit" class="auth btn btn-primary">Log In</button>
+                </form>
+                <!-- SIGN UP MODAL -->
+                <button id="signUpButton" type="button" class="auth btn btn-outline-primary" data-toggle="modal" data-target="#signUpModal">
+                  Create Account
+                </button>
+                <div class="modal fade" id="signUpModal" tabindex="-1" role="dialog" aria-labelledby="signUpModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="signUpModalLabel">Sign up to get the adventure started!</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form id='sign-up'>
+                          <input name="credentials[email]" type="email" placeholder="Enter Email Here" required>
+                            <input name="credentials[password]" type="password" placeholder="Enter Password Here" required>
+                            <input name="credentials[password_confirmation]" type="password" placeholder="Enter Password Again" required>
+                            <button>Create Account</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-                <div class="modal-body">
-                  <form id='sign-up'>
-                    <input name="credentials[email]" type="email" placeholder="Enter Email Here" required>
-                      <input name="credentials[password]" type="password" placeholder="Enter Password Here" required>
-                      <input name="credentials[password_confirmation]" type="password" placeholder="Enter Password Again" required>
-                      <button>Sign Up</button>
-                  </form>
+                <!-- CHANGE PASSWORD MODAL -->
+                <button id="changepasswordbtn" type="button" class="auth btn btn-outline-primary" data-toggle="modal" data-target="#changePasswordModal">
+                  Change Password
+                </button>
+                <div class="modal fade" id="changePasswordModal" tabindex="-1" role="dialog" aria-labelledby="changePasswordModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="changePasswordModalLabel">Change Password</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form id='change-password'>
+                          <input name="passwords[old]" type="password" placeholder="Enter Old Password" required>
+                          <input name="passwords[new]" type="password" placeholder="Enter New Password" required>
+                          <button>Change Password</button>
+                          <div id='changepassword-message'></div>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
+                <form id='sign-out'>
+                  <button class='soauth btn btn-outline-primary'>Sign Out</button>
+                </form>
+                <div id='signup-message'></div>
+                <div id='signout-message'></div>
+                <div id='error-message'></div>
+                <hr>
+              </section>
             </div>
           </div>
-          <form id='sign-in'>
-            <div class="form-group">
-              <label for="exampleInputEmail1">Email address</label>
-              <input name="credentials[email]" type="email" class="form-control" id="signInEmailInput" aria-describedby="emailHelp" placeholder="Enter email">
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col text-center">
+              <section id='trip-section'>
+                <button id='indextrips'>View All Trips</button>
+                <button id='hidetripinfo'>Hide Trip Info</button>
+                <form id='create-trip'>
+                  <input name="trip[name]" type="text" placeholder="Enter New Trip Name" required>
+                  <input name="trip[dates]" type="text" placeholder="Enter Dates Visiting" required>
+                  <input name="trip[description]" type="text" placeholder="Enter Trip Notes" required>
+                  <button>Create New Trip</button>
+                </form>
+                <form id='show-trip'>
+                  <input name="trip[id]" type="text" placeholder="Enter Trip Id">
+                  <button>Show Trip</button>
+                </form>
+                <form id='update-trip'>
+                  <input name="trip[id]" type="text" placeholder="Enter Trip Id">
+                  <input name="trip[name]" type="text" placeholder="Update Trip Name" required>
+                  <input name="trip[dates]" type="text" placeholder="Update Dates Visiting" required>
+                  <input name="trip[description]" type="text" placeholder="Update Trip Notes" required>
+                  <button>Update Existing Trip</button>
+                </form>
+                <form id='destroy-trip'>
+                  <input name="trip[id]" type="text" placeholder="Enter Trip Id">
+                  <button>Delete This Trip</button>
+                </form>
+                <!--<div id='createtrip-message'></div>
+                <div id='showtrip-message'></div> -->
+                <div id='trip-message'></div>
+                <div id='triperror-message'></div>
+                <!-- <div id='destroytrip-message'></div> -->
+              </section>
             </div>
-            <div class="form-group">
-              <label for="exampleInputPassword1">Password</label>
-              <input name="credentials[password]" type="password" class="form-control" id="signInPasswordInput" placeholder="Password">
-            </div>
-            <button id="signinbtn" type="submit" class="btn btn-outline-primary">Sign In</button>
-          </form>
-          <form id='change-password'>
-            <input name="passwords[old]" type="password" placeholder="Enter Old Password" required>
-            <input name="passwords[new]" type="password" placeholder="Enter New Password" required>
-            <button>Change Password</button>
-            <div id='changepassword-message'></div>
-          </form>
-          <form id='sign-out'>
-            <button class='sign-out-button'>Sign Out</button>
-          </form>
-          <div id='signup-message'></div>
-          <div id='signout-message'></div>
-          <div id='error-message'></div>
-          <hr>
-        </section>
-        <section id='trip-section'>
-          <button id='indextrips'>View All Trips</button>
-          <button id='hidetripinfo'>Hide Trip Info</button>
-          <form id='create-trip'>
-            <input name="trip[name]" type="text" placeholder="Enter New Trip Name" required>
-            <input name="trip[dates]" type="text" placeholder="Enter Dates Visiting" required>
-            <input name="trip[description]" type="text" placeholder="Enter Trip Notes" required>
-            <button>Create New Trip</button>
-          </form>
-          <form id='show-trip'>
-            <input name="trip[id]" type="text" placeholder="Enter Trip Id">
-            <button>Show Trip</button>
-          </form>
-          <form id='update-trip'>
-            <input name="trip[id]" type="text" placeholder="Enter Trip Id">
-            <input name="trip[name]" type="text" placeholder="Update Trip Name" required>
-            <input name="trip[dates]" type="text" placeholder="Update Dates Visiting" required>
-            <input name="trip[description]" type="text" placeholder="Update Trip Notes" required>
-            <button>Update Existing Trip</button>
-          </form>
-          <form id='destroy-trip'>
-            <input name="trip[id]" type="text" placeholder="Enter Trip Id">
-            <button>Delete This Trip</button>
-          </form>
-          <!--<div id='createtrip-message'></div>
-          <div id='showtrip-message'></div> -->
-          <div id='trip-message'></div>
-          <div id='triperror-message'></div>
-          <!-- <div id='destroytrip-message'></div> -->
-        </section>
+          </div>
+        </div>
       </main>
     </body>
 </html>
