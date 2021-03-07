@@ -14,10 +14,13 @@ $(() => {
   $('#show-trip').on('submit', tripEvents.onShowTrip)
   $('#hidetripinfo').on('click', tripEvents.onHideTrip)
   $('#indextrips').on('click', tripEvents.onIndexTrip)
-  $('#update-trip').on('submit', tripEvents.onUpdateTrip)
   $('#destroy-trip').on('submit', tripEvents.onDestroyTrip)
   // HIDE BEFORE SIGN IN //
   $('#trip-section').hide()
   $('#sign-out').hide()
   $('#changepasswordbtn').hide()
+
+  // DYNAMIC UPDATE AND DELETE //
+  $('#trip-message').on('click', '.trips-destroy-dynamic', tripEvents.onDynamicDestroyTrip)
+  $('#trip-message').on('submit', '.trips-update-dynamic', tripEvents.onDynamicUpdateTrip)
 })

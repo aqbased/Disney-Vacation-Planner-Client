@@ -32,8 +32,6 @@ const indexTrip = function () {
 }
 
 const updateTrip = function (id, data) {
-  console.log('this is api id', id)
-  console.log('this is api data', data)
   return $.ajax({
     url: config.apiUrl + '/trips/' + id,
     method: 'PATCH',
@@ -45,7 +43,6 @@ const updateTrip = function (id, data) {
 }
 
 const destroyTrip = function (id) {
-  console.log('this is destroyTrip Id', id)
   return $.ajax({
     url: config.apiUrl + '/trips/' + id,
     method: 'DELETE',
