@@ -27,19 +27,6 @@ const onIndexTrip = function (event) {
     .catch(ui.onTripFailure)
 }
 
-const onUpdateTrip = function (event) {
-  event.preventDefault()
-  const form = event.target
-  const data = getFormFields(form)
-  const id = data.trip.id
-  console.log('this is the update trip data', data)
-  console.log('this is the update trip id', id)
-  api.updateTrip(id, data)
-    .then(ui.onUpdateTripSuccess)
-    // CHANGE THIS FAILURE
-    .catch(ui.onTripFailure)
-}
-
 const onDestroyTrip = function (event) {
   event.preventDefault()
   const form = event.target
@@ -47,7 +34,6 @@ const onDestroyTrip = function (event) {
   const id = data.trip.id
   api.destroyTrip(id)
     .then(ui.onDestroyTripSuccess)
-    // CHANGE THIS FAILURE
     .catch(ui.onTripFailure)
 }
 
@@ -55,11 +41,33 @@ const onHideTrip = function (event) {
   $('#trip-message').html('')
 }
 
+const onDynamicDestroyTrip = function (event) {
+  console.log('at event.js dynamicdestroy')
+  const deleteButton = event.target
+  const id = $(deleteButton).data('id')
+  api.destroyTrip(id)
+    .then(ui.onDestroyTripSuccess)
+    .catch(ui.onTripFailure)
+}
+
+const onDynamicUpdateTrip = function (event) {
+  console.log('at event.js onDynamicUpdateTrip')
+  event.preventDefault()
+  const updateForm = event.target
+  const id = $(updateForm).data('id')
+  console.log(id)
+  const formData = getFormFields(updateForm)
+  api.updateTrip(id, formData)
+    .then(ui.onUpdateTripSuccess)
+    .catch(ui.onTripFailure)
+}
+
 module.exports = {
   onCreateTrip,
   onShowTrip,
   onHideTrip,
   onIndexTrip,
-  onUpdateTrip,
-  onDestroyTrip
+  onDestroyTrip,
+  onDynamicDestroyTrip,
+  onDynamicUpdateTrip
 }

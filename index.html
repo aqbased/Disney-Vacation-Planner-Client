@@ -6,6 +6,8 @@
 
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+      <link rel="preconnect" href="https://fonts.gstatic.com">
+      <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
 
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
@@ -85,7 +87,6 @@
                 <div id='signup-message'></div>
                 <div id='signout-message'></div>
                 <div id='error-message'></div>
-                <hr>
               </section>
             </div>
           </div>
@@ -94,34 +95,39 @@
           <div class="row">
             <div class="col text-center">
               <section id='trip-section'>
-                <button id='indextrips'>View All Trips</button>
-                <button id='hidetripinfo'>Hide Trip Info</button>
-                <form id='create-trip'>
-                  <input name="trip[name]" type="text" placeholder="Enter New Trip Name" required>
-                  <input name="trip[dates]" type="text" placeholder="Enter Dates Visiting" required>
-                  <input name="trip[description]" type="text" placeholder="Enter Trip Notes" required>
-                  <button>Create New Trip</button>
-                </form>
+                <button id='indextrips' class="btn btn-info">View All Trips</button>
+                <button id='hidetripinfo' class="btn btn-info">Hide Trip Info</button>
+                <!-- CREATE TRIP MODAL -->
+                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#createTripModal">
+                  Create New Trip
+                </button>
+                <div class="modal fade" id="createTripModal" tabindex="-1" role="dialog" aria-labelledby="createTripModalLabel" aria-hidden="true">
+                  <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <h5 class="modal-title" id="createTripModalLabel">Create A New Trip</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                          <span aria-hidden="true">&times;</span>
+                        </button>
+                      </div>
+                      <div class="modal-body">
+                        <form id='create-trip'>
+                          <input name="trip[name]" type="text" placeholder="Enter New Trip Name" required>
+                          <input name="trip[dates]" type="text" placeholder="Enter Dates Visiting" required>
+                          <input name="trip[description]" type="text" placeholder="Enter Trip Notes" required>
+                          <button>Create New Trip</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 <form id='show-trip'>
                   <input name="trip[id]" type="text" placeholder="Enter Trip Id">
                   <button>Show Trip</button>
                 </form>
-                <form id='update-trip'>
-                  <input name="trip[id]" type="text" placeholder="Enter Trip Id">
-                  <input name="trip[name]" type="text" placeholder="Update Trip Name" required>
-                  <input name="trip[dates]" type="text" placeholder="Update Dates Visiting" required>
-                  <input name="trip[description]" type="text" placeholder="Update Trip Notes" required>
-                  <button>Update Existing Trip</button>
-                </form>
-                <form id='destroy-trip'>
-                  <input name="trip[id]" type="text" placeholder="Enter Trip Id">
-                  <button>Delete This Trip</button>
-                </form>
-                <!--<div id='createtrip-message'></div>
-                <div id='showtrip-message'></div> -->
+                <div id='trip0-message'></div>
                 <div id='trip-message'></div>
                 <div id='triperror-message'></div>
-                <!-- <div id='destroytrip-message'></div> -->
               </section>
             </div>
           </div>

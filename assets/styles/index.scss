@@ -17,9 +17,27 @@ header {
 }
 
 #changepasswordbtn {
-  float: left;
+  margin: 10px 0;
 }
 
 .soauth {
-  float: right;
+  margin-bottom: 50px;
+}
+
+#show-trip {
+  padding: 10px;
+  margin: 10px;
+}
+
+.index-dynamic-button {
+  margin: 10px;
+  padding: 5px;
+}
+.carousel-caption {
+  background-color: rgba(255, 255, 255, .25);
+  border-radius: 20px;
+}
+.showText {
+  color: black;
+  font-family: 'Pacifico', cursive;
 }

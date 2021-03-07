@@ -3,15 +3,8 @@
 
 const onCreateTripSuccess = function (response) {
   $('form').trigger('reset')
-  $('#trip-message').html(`You're created trip's id is: ${response._id}`)
-  setTimeout(() => {
-    $('#trip-message').html('')
-  }, 5000)
-}
-
-const onShowTripSuccess = function (response) {
-  $('form').trigger('reset')
-  const tripInfo = response.trip
+  $('#createTripModal').modal('hide')
+  const tripInfo = response
   const tripInfoHtml = `
     <h4>Name: ${tripInfo.name}</h4>
     <p>Dates: ${tripInfo.dates}</p>
@@ -22,14 +15,63 @@ const onShowTripSuccess = function (response) {
   $('#trip-message').html(tripInfoHtml)
 }
 
+const onShowTripSuccess = function (response) {
+  $('form').trigger('reset')
+  const tripInfo = response.trip
+  // const tripInfoHtml = `
+  //   <h4>Name: ${tripInfo.name}</h4>
+  //   <p>Dates: ${tripInfo.dates}</p>
+  //   <p>Description: ${tripInfo.description}</p>
+  //   <p>Trip Id: ${tripInfo._id}</p>
+  // `
+  const tripInfoHtml = `<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+<div class="carousel-inner">
+<div class="carousel-item active">
+<img class="d-block w-100" src="https://i.imgur.com/1LREBba.jpg" alt="First slide">
+<div class="carousel-caption d-none d-md-block">
+    <h2 class="showText">Name: ${tripInfo.name}</h2>
+    <h3 class="showText">Dates: ${tripInfo.dates}<br>
+    Description: ${tripInfo.description}<br>
+    Trip Id: ${tripInfo._id}</h3>
+  </div>
+</div>
+<div class="carousel-item">
+<img class="d-block w-100" src="https://i.imgur.com/W2KV8HM.jpg" alt="Second slide">
+</div>
+<div class="carousel-item">
+<img class="d-block w-100" src="https://i.imgur.com/W2KV8HM.jpg" alt="Third slide">
+</div>
+</div>
+<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+<span class="carousel-control-prev-icon" aria-hidden="true"></span>
+<span class="sr-only">Previous</span>
+</a>
+<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+<span class="carousel-control-next-icon" aria-hidden="true"></span>
+<span class="sr-only">Next</span>
+</a>
+</div>`
+  $('#trip-message').show()
+  $('#trip-message').html(tripInfoHtml)
+}
+
 const onIndexTripSuccess = function (response) {
   let tripInfoHtml = ''
   response.forEach(response => {
     tripInfoHtml += `
-      <p>Name: ${response.name}<p>
-      <p>Dates: ${response.dates}<p>
-      <p>Description: ${response.description}<p>
-      <p>Trip Id: ${response._id}
+      <hr>
+      <p>Name: ${response.name}</p>
+      <p>Dates: ${response.dates}</p>
+      <p>Description: ${response.description}</p>
+      <p>Trip Id: ${response._id}</p>
+      <form class="trips-update-dynamic" data-id=${response._id}>
+        <input type="text" name="trip[name]" placeholder="Enter new trip name" required>
+        <input type="text" name="trip[dates]" placeholder="Enter new dates" required>
+        <input type="text" name="trip[description]" placeholder="Enter new description" required><br>
+        <button type="submit" class="index-dynamic-button">Update Trip</button>
+      </form>
+      <button class='trips-destroy-dynamic index-dynamic-button' data-id=${response._id}>Delete Trip</button>
+      <br>
       <hr>
     `
   })
@@ -39,17 +81,20 @@ const onIndexTripSuccess = function (response) {
 
 const onUpdateTripSuccess = function () {
   $('form').trigger('reset')
-  $('#trip-message').html('The update has gone through.  Search the trip by ID to check updates or view through your index.')
+  $('#updateTripModal').modal('hide')
+  $('#trip-message').hide()
+  $('#trip0-message').html('The update has gone through.  Search the trip by ID to check updates or view through your index.')
   setTimeout(() => {
-    $('#trip-message').html('')
+    $('#trip0-message').html('')
   }, 5000)
 }
 
 const onDestroyTripSuccess = function () {
   $('form').trigger('reset')
-  $('#trip-message').html('Your trip has been deleted.')
+  $('#trip-message').hide()
+  $('#trip0-message').html('Your trip has been deleted.')
   setTimeout(() => {
-    $('#trip-message').html('')
+    $('#trip0-message').html('')
   }, 5000)
 }
 
