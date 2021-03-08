@@ -62,6 +62,18 @@ const onDynamicUpdateTrip = function (event) {
     .catch(ui.onTripFailure)
 }
 
+const onDynamicCreateEvent = function (event) {
+  console.log('this is the event response', event)
+  event.preventDefault()
+  const eventForm = event.target
+  const id = $(eventForm).data('id')
+  console.log(id)
+  const formData = getFormFields(eventForm)
+  api.createEvent(id, formData)
+    .then(ui.onCreateEventSuccess)
+    .catch(ui.onTripFailure)
+}
+
 module.exports = {
   onCreateTrip,
   onShowTrip,
@@ -69,5 +81,6 @@ module.exports = {
   onIndexTrip,
   onDestroyTrip,
   onDynamicDestroyTrip,
-  onDynamicUpdateTrip
+  onDynamicUpdateTrip,
+  onDynamicCreateEvent
 }
