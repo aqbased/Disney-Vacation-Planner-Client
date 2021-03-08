@@ -20,7 +20,10 @@ $(() => {
   $('#sign-out').hide()
   $('#changepasswordbtn').hide()
 
-  // DYNAMIC UPDATE AND DELETE //
+  // DYNAMIC INDEX UPDATE AND DELETE //
   $('#trip-message').on('click', '.trips-destroy-dynamic', tripEvents.onDynamicDestroyTrip)
   $('#trip-message').on('submit', '.trips-update-dynamic', tripEvents.onDynamicUpdateTrip)
+
+  // DYNAMIC EVENTS SECTION //
+  $('#trip-message').on('submit', tripEvents.onDynamicCreateEvent)
 })

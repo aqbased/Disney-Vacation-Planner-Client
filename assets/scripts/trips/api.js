@@ -52,10 +52,22 @@ const destroyTrip = function (id) {
   })
 }
 
+const createEvent = function (id, data) {
+  return $.ajax({
+    url: config.apiUrl + '/trips/' + id + '/events',
+    method: 'POST',
+    headers: {
+      Authorization: 'Bearer ' + store.user.token
+    },
+    data: data
+  })
+}
+
 module.exports = {
   createTrip,
   showTrip,
   indexTrip,
   updateTrip,
-  destroyTrip
+  destroyTrip,
+  createEvent
 }

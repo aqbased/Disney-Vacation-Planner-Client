@@ -18,39 +18,35 @@ const onCreateTripSuccess = function (response) {
 const onShowTripSuccess = function (response) {
   $('form').trigger('reset')
   const tripInfo = response.trip
-  // const tripInfoHtml = `
-  //   <h4>Name: ${tripInfo.name}</h4>
-  //   <p>Dates: ${tripInfo.dates}</p>
-  //   <p>Description: ${tripInfo.description}</p>
-  //   <p>Trip Id: ${tripInfo._id}</p>
-  // `
-  const tripInfoHtml = `<div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
-<div class="carousel-inner">
-<div class="carousel-item active">
-<img class="d-block w-100" src="https://i.imgur.com/1LREBba.jpg" alt="First slide">
-<div class="carousel-caption d-none d-md-block">
-    <h2 class="showText">Name: ${tripInfo.name}</h2>
-    <h3 class="showText">Dates: ${tripInfo.dates}<br>
-    Description: ${tripInfo.description}<br>
-    Trip Id: ${tripInfo._id}</h3>
+  const tripInfoHtml = `
+
+  <form id='createEventForm' data-id=${tripInfo._id}>
+  <input name="event[parkPlan]" type="text" placeholder="Enter Park for this event" required>
+  <input name="event[content]" type="text" placeholder="Enter notes about this event" required>
+  <button type="submit">Create Event</button><br><br>
+  </form>
+
+  <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
+  <div class="carousel-inner">
+  <div class="carousel-item active">
+  <img class="d-block w-100" src="https://i.imgur.com/1LREBba.jpg" alt="First slide">
+  <div class="carousel-caption d-none d-md-block">
+      <h2 class="showText">Name: ${tripInfo.name}</h2>
+      <h3 class="showText">Dates: ${tripInfo.dates}<br>
+      Description: ${tripInfo.description}<br>
+      Trip Id: ${tripInfo._id}</h3>
+    </div>
   </div>
-</div>
-<div class="carousel-item">
-<img class="d-block w-100" src="https://i.imgur.com/W2KV8HM.jpg" alt="Second slide">
-</div>
-<div class="carousel-item">
-<img class="d-block w-100" src="https://i.imgur.com/W2KV8HM.jpg" alt="Third slide">
-</div>
-</div>
-<a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
-<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-<span class="sr-only">Previous</span>
-</a>
-<a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
-<span class="carousel-control-next-icon" aria-hidden="true"></span>
-<span class="sr-only">Next</span>
-</a>
-</div>`
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleControls" role="button" data-slide="prev">
+  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+  <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleControls" role="button" data-slide="next">
+  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+  <span class="sr-only">Next</span>
+  </a>
+  </div>`
   $('#trip-message').show()
   $('#trip-message').html(tripInfoHtml)
 }
@@ -81,7 +77,6 @@ const onIndexTripSuccess = function (response) {
 
 const onUpdateTripSuccess = function () {
   $('form').trigger('reset')
-  $('#updateTripModal').modal('hide')
   $('#trip-message').hide()
   $('#trip0-message').html('The update has gone through.  Search the trip by ID to check updates or view through your index.')
   setTimeout(() => {
@@ -106,11 +101,38 @@ const onTripFailure = function () {
   }, 5000)
 }
 
+const onCreateEventSuccess = function (response) {
+  console.log('this is the C E S response', response)
+  console.log('this is the C E S response.trip.events', response.trip.events)
+  console.log('this is response.trip.events[0].parkPlan', response.trip.events[0].parkPlan)
+
+  $('form').trigger('reset')
+  // $('#createEventModal').modal('hide')
+  console.log('create event success')
+  // $('#eventNameText').html(`Event: ${response.trip.events[0].parkPlan}`)
+  // $('#eventContentText').html(`Event: ${response.trip.events[0].content}`)
+  const data = response.trip.events
+  let tripEventsHtml = ''
+  data.forEach(data => {
+    tripEventsHtml += `
+      <div class="carousel-item">
+      <img class="d-block w-100" src="https://i.imgur.com/W2KV8HM.jpg" alt="Second slide">
+      <div class="carousel-caption d-none d-md-block">
+          <h2 id="eventNameText">${data.parkPlan}</h2>
+          <h2 id="eventContentText">${data.content}</h2>
+        </div>
+      </div>
+      `
+  })
+  $('.carousel-inner').append(tripEventsHtml)
+}
+
 module.exports = {
   onCreateTripSuccess,
   onShowTripSuccess,
   onIndexTripSuccess,
   onUpdateTripSuccess,
   onDestroyTripSuccess,
-  onTripFailure
+  onTripFailure,
+  onCreateEventSuccess
 }
