@@ -21,7 +21,11 @@ started off with all the CRUD actions for them and added forms to go along with
 them.  Finally I wanted to implement a subdocument to be created by the user
 also.  With that part of the project happening I also implemented a carousel
 with 2 seperate images on each slide for a user's trip and event info to to
-act as a caption for.
+act as a caption for.  My main problem solving strategy was to break and fix my
+code over and over for a good 10-20 minutes.  I would then search our main
+project repo's issue queu and google for any help.  If all of the above fails
+I had the help of my instructors or fellow classmates to help tag-team the
+problem.
 
 ### User Stories
 
