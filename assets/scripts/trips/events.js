@@ -42,7 +42,6 @@ const onHideTrip = function (event) {
 }
 
 const onDynamicDestroyTrip = function (event) {
-  console.log('at event.js dynamicdestroy')
   const deleteButton = event.target
   const id = $(deleteButton).data('id')
   api.destroyTrip(id)
@@ -51,11 +50,9 @@ const onDynamicDestroyTrip = function (event) {
 }
 
 const onDynamicUpdateTrip = function (event) {
-  console.log('at event.js onDynamicUpdateTrip')
   event.preventDefault()
   const updateForm = event.target
   const id = $(updateForm).data('id')
-  console.log(id)
   const formData = getFormFields(updateForm)
   api.updateTrip(id, formData)
     .then(ui.onUpdateTripSuccess)
@@ -63,11 +60,9 @@ const onDynamicUpdateTrip = function (event) {
 }
 
 const onDynamicCreateEvent = function (event) {
-  console.log('this is the event response', event)
   event.preventDefault()
   const eventForm = event.target
   const id = $(eventForm).data('id')
-  console.log(id)
   const formData = getFormFields(eventForm)
   api.createEvent(id, formData)
     .then(ui.onCreateEventSuccess)

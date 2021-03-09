@@ -15,11 +15,11 @@ $(() => {
   $('#hidetripinfo').on('click', tripEvents.onHideTrip)
   $('#indextrips').on('click', tripEvents.onIndexTrip)
   $('#destroy-trip').on('submit', tripEvents.onDestroyTrip)
-  // HIDE BEFORE SIGN IN //
+  // HIDE BEFORE SIGN IN or SUCCESS //
   $('#trip-section').hide()
   $('#sign-out').hide()
   $('#changepasswordbtn').hide()
-
+  $('#showCaro').hide()
   // DYNAMIC INDEX UPDATE AND DELETE //
   $('#trip-message').on('click', '.trips-destroy-dynamic', tripEvents.onDynamicDestroyTrip)
   $('#trip-message').on('submit', '.trips-update-dynamic', tripEvents.onDynamicUpdateTrip)
