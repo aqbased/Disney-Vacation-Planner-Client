@@ -21,8 +21,8 @@ $(() => {
   $('#changepasswordbtn').hide()
   $('#showCaro').hide()
   // DYNAMIC INDEX UPDATE AND DELETE //
-  $('#trip-message').on('click', '.trips-destroy-dynamic', tripEvents.onDynamicDestroyTrip)
-  $('#trip-message').on('submit', '.trips-update-dynamic', tripEvents.onDynamicUpdateTrip)
+  $('#trip1-message').on('click', '.trips-destroy-dynamic', tripEvents.onDynamicDestroyTrip)
+  $('#trip1-message').on('submit', '.trips-update-dynamic', tripEvents.onDynamicUpdateTrip)
 
   // DYNAMIC EVENTS SECTION //
   $('#trip-message').on('submit', tripEvents.onDynamicCreateEvent)

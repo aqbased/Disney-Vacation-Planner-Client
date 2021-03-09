@@ -1,8 +1,13 @@
 'use strict'
 
 const onCreateTripSuccess = function (response) {
+  $('#tripsuccess-message').html('Great, you created a new trip!  Your trip information is below.  Either search the trip by ID or find it in your trip list for more options.')
+  setTimeout(() => {
+    $('#tripsuccess-message').html('')
+  }, 10000)
   $('form').trigger('reset')
   $('#createTripModal').modal('hide')
+  $('#trip1-message').hide()
   const tripInfo = response
   const tripInfoHtml = `
     <h4>Name: ${tripInfo.name}</h4>
@@ -16,6 +21,7 @@ const onCreateTripSuccess = function (response) {
 
 const onShowTripSuccess = function (response) {
   $('form').trigger('reset')
+  $('#trip1-message').hide()
   const tripInfo = response.trip
   const tripInfoHtml = `
 
@@ -63,6 +69,7 @@ const onShowTripSuccess = function (response) {
 }
 
 const onIndexTripSuccess = function (response) {
+  $('#trip-message').hide()
   let tripInfoHtml = ''
   response.forEach(response => {
     tripInfoHtml += `
@@ -82,13 +89,13 @@ const onIndexTripSuccess = function (response) {
       <hr>
     `
   })
-  $('#trip-message').show()
-  $('#trip-message').html(tripInfoHtml)
+  $('#trip1-message').show()
+  $('#trip1-message').html(tripInfoHtml)
 }
 
 const onUpdateTripSuccess = function () {
   $('form').trigger('reset')
-  $('#trip-message').hide()
+  $('#trip1-message').hide()
   $('#trip0-message').html('The update has gone through.  Search the trip by ID to check updates or view through your index.')
   setTimeout(() => {
     $('#trip0-message').html('')
@@ -97,11 +104,11 @@ const onUpdateTripSuccess = function () {
 
 const onDestroyTripSuccess = function () {
   $('form').trigger('reset')
-  $('#trip-message').hide()
+  $('#trip1-message').hide()
   $('#trip0-message').html('Your trip has been deleted.')
   setTimeout(() => {
     $('#trip0-message').html('')
-  }, 5000)
+  }, 8000)
 }
 
 const onTripFailure = function () {
@@ -113,6 +120,10 @@ const onTripFailure = function () {
 }
 
 const onCreateEventSuccess = function (response) {
+  $('#tripsuccess-message').html('Great!  You created a new event!  Click the slide below to see your events.')
+  setTimeout(() => {
+    $('#tripsuccess-message').html('')
+  }, 5000)
   $('form').trigger('reset')
   $('#eventNameText').html('')
   $('#eventContentText').html('')

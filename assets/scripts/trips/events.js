@@ -39,6 +39,7 @@ const onDestroyTrip = function (event) {
 
 const onHideTrip = function (event) {
   $('#trip-message').html('')
+  $('#trip1-message').html('')
 }
 
 const onDynamicDestroyTrip = function (event) {
