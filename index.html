@@ -7,14 +7,14 @@
       <!-- Do not add `link` tags-->
       <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
       <link rel="preconnect" href="https://fonts.gstatic.com">
-      <link href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap" rel="stylesheet">
-
+      <link href="https://fonts.googleapis.com/css2?family=Exo+2:wght@600&family=Indie+Flower&display=swap" rel="stylesheet">
       <!-- Do not add `script` tags-->
       <script src="public/vendor.js" type="text/javascript" charset="utf-8" defer></script>
       <script src="public/application.js" type="text/javascript" charset="utf-8" defer></script>
     </head>
     <body>
       <header>
+        <img class="headerImg" alt="Disney Castle" src="https://i.pinimg.com/originals/47/50/2e/47502e43bd1db4d61e3e649a2e44fcd2.png">
         <h1>Disney Vacation Planner</h1>
       </header>
       <main>
@@ -24,11 +24,11 @@
               <section id='auth-section'>
                 <form id='sign-in'>
                   <div class="form-group">
-                    <label for="exampleInputEmail1">Email address</label>
+                    <label class="signInLabel" for="exampleInputEmail1">Email address</label>
                     <input name="credentials[email]" type="email" class="form-control" id="signInEmailInput" aria-describedby="emailHelp" placeholder="Enter email here">
                   </div>
                   <div class="form-group">
-                    <label for="exampleInputPassword1">Password</label>
+                    <label class="signInLabel" for="exampleInputPassword1">Password</label>
                     <input name="credentials[password]" type="password" class="form-control" id="signInPasswordInput" placeholder="Enter password here">
                   </div>
                   <button id="signinbtn" type="submit" class="auth btn btn-primary">Log In</button>
@@ -51,7 +51,7 @@
                           <input name="credentials[email]" type="email" placeholder="Enter Email Here" required>
                             <input name="credentials[password]" type="password" placeholder="Enter Password Here" required>
                             <input name="credentials[password_confirmation]" type="password" placeholder="Enter Password Again" required>
-                            <button>Create Account</button>
+                            <button class="btn btn-primary">Create Account</button>
                         </form>
                       </div>
                     </div>
@@ -74,7 +74,7 @@
                         <form id='change-password'>
                           <input name="passwords[old]" type="password" placeholder="Enter Old Password" required>
                           <input name="passwords[new]" type="password" placeholder="Enter New Password" required>
-                          <button>Change Password</button>
+                          <button class="btn btn-primary">Change Password</button>
                           <div id='changepassword-message'></div>
                         </form>
                       </div>
@@ -95,10 +95,10 @@
           <div class="row">
             <div class="col text-center">
               <section id='trip-section'>
-                <button id='indextrips' class="btn btn-info">View All Trips</button>
-                <button id='hidetripinfo' class="btn btn-info">Hide Trip Info</button>
+                <button id='indextrips' class="btn btn-outline-success">View All Trips</button>
+                <button id='hidetripinfo' class="btn btn-outline-success">Hide Trip Info</button>
                 <!-- CREATE TRIP MODAL -->
-                <button type="button" class="btn btn-info" data-toggle="modal" data-target="#createTripModal">
+                <button type="button" class="btn btn-outline-success" data-toggle="modal" data-target="#createTripModal">
                   Create New Trip
                 </button>
                 <div class="modal fade" id="createTripModal" tabindex="-1" role="dialog" aria-labelledby="createTripModalLabel" aria-hidden="true">
@@ -115,7 +115,7 @@
                           <input name="trip[name]" type="text" placeholder="Enter New Trip Name" required>
                           <input name="trip[dates]" type="text" placeholder="Enter Dates Visiting" required>
                           <input name="trip[description]" type="text" placeholder="Enter Trip Notes" required>
-                          <button>Create New Trip</button>
+                          <button class="btn btn-primary">Create New Trip</button>
                         </form>
                       </div>
                     </div>
@@ -123,7 +123,7 @@
                 </div>
                 <form id='show-trip'>
                   <input name="trip[id]" type="text" placeholder="Enter Trip Id">
-                  <button>Show Trip</button>
+                  <button class="btn btn-primary">Show Trip</button>
                 </form>
                 <div id='trip0-message'></div>
                 <div id='trip-message'></div>
@@ -133,7 +133,5 @@
           </div>
         </div>
       </main>
-      <footer id="footerid">
-      </footer>
     </body>
 </html>

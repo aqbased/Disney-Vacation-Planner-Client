@@ -20,7 +20,6 @@ const authFailure = function (response) {
 
 const onSignInSuccess = function (response) {
   store.user = response.user
-  console.log(store.user)
   $('form').trigger('reset')
   $('#signin-message').html('Welcome home!')
   setTimeout(() => {
