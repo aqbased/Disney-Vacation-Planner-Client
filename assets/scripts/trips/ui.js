@@ -45,7 +45,7 @@ const onShowTripSuccess = function (response) {
   <div class="carousel-item">
   <img class="d-block w-100" src="https://i.imgur.com/zjTWqvk.jpg" alt="Second slide">
   <div class="carousel-caption ">
-      <h2 id="eventNameText" class="showText"></h2>
+      <p id="eventNameText" class="showText"></p>
     </div>
   </div>
   </div>
@@ -61,10 +61,15 @@ const onShowTripSuccess = function (response) {
   $('#trip-message').show()
   $('#trip-message').html(tripInfoHtml)
   const data = response.trip.events
-  for (let i = 0; i < data.length; i++) {
-    const newEventName = data[i].parkPlan
-    const newEventContent = data[i].content
-    $('#eventNameText').append(`Event Name: ${newEventName} || Event Notes: ${newEventContent} <br><hr>`)
+  if (data.length === 0) {
+    $('#eventNameText').html('Events will be shown here once created.  You can do that in the form above.')
+  } else {
+    $('#eventNameText').html('')
+    for (let i = 0; i < data.length; i++) {
+      const newEventName = data[i].parkPlan
+      const newEventContent = data[i].content
+      $('#eventNameText').append(`Event Name: ${newEventName} || Event Notes: ${newEventContent} <br><hr>`)
+    }
   }
 }
 
@@ -91,6 +96,12 @@ const onIndexTripSuccess = function (response) {
   })
   $('#trip1-message').show()
   $('#trip1-message').html(tripInfoHtml)
+  if ($('#trip1-message').html() === '') {
+    $('#trip1-message').html('There are no trips to show.  Please create a trip to see information here.')
+    setTimeout(() => {
+      $('#trip1-message').html('')
+    }, 5000)
+  }
 }
 
 const onUpdateTripSuccess = function () {
