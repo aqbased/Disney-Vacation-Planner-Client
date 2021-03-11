@@ -56,6 +56,7 @@ const onSignOutSuccess = function (response) {
   $('#sign-out').hide()
   $('#changepasswordbtn').hide()
   $('#trip-message').hide()
+  $('#trip1-message').hide()
 }
 
 module.exports = {

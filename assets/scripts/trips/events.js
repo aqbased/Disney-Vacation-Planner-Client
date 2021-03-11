@@ -38,8 +38,15 @@ const onDestroyTrip = function (event) {
 }
 
 const onHideTrip = function (event) {
-  $('#trip-message').html('')
-  $('#trip1-message').html('')
+  if ($('#trip-message').text() !== '' || $('#trip1-message').text() !== '') {
+    $('#trip-message').html('')
+    $('#trip1-message').html('')
+  } else {
+    $('#trip1-message').html('There are no trips to hide.')
+    setTimeout(() => {
+      $('#trip1-message').html('')
+    }, 5000)
+  }
 }
 
 const onDynamicDestroyTrip = function (event) {
